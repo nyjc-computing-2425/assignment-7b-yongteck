@@ -1,5 +1,7 @@
 import unittest
 
+from main import *
+
 class TestRun:
     def __init__(self,
                  testcase: unittest.TestCase,
