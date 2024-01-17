@@ -77,4 +77,5 @@ Write a function, `analyze_grades(studentdata)` which takes the student data and
 
 # Submission
 
-Before submission, run the tests.
+Before submitting your code, run the automated tests on your functions. In the shell, type `python test_main.py` and press enter to see the results of the testing.
+
