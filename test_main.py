@@ -2,44 +2,6 @@ import unittest
 
 from main import *
 
-class TestRun:
-    def __init__(self,
-                 testcase: unittest.TestCase,
-                 ans: Any,
-                 func: Callable,
-                 call_args: Tuple[Any] = tuple()) -> None:
-        self.testcase = testcase
-        self.func = func
-        self.call_args = call_args
-        self.ans = ans
-        self.result = func(*call_args)
-    
-    def callstr(self) -> str:
-        return (
-            f"{self.func.__name__}"
-            f"({', '.join(repr(self.call_args) for arg in self.call_args)})"
-        )
-    
-    def test(self) -> None:
-        callstr = self.callstr()
-        if self.ans is not None:
-            self.testcase.assertIsNotNone(
-                self.result,
-                msg=f"{callstr} returned None"
-            )
-        self.testcase.assertIsInstance(
-            self.result, type(self.ans),
-            msg=f"{callstr} returned {type(self.result)}, expected {type(self.ans)}"
-        )
-        self.testcase.assertEqual(
-            self.result, self.ans,
-            msg=f"{callstr}: Got {self.result!r}, expected {self.ans!r}"
-        )
-        # Check docstring
-        self.testcase.assertTrue(hasattr(self.func, "__doc__"), msg=f"{callstr} has no docstring")
-        self.testcase.assertTrue(self.func.__doc__, msg=f"{callstr} has no docstring")
-
-
 class TestAssignment(unittest.TestCase):
 
     def test_part1(self):
